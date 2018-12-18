@@ -1,4 +1,10 @@
 <html>
+  <header>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+  </header>
   <body>
     <div id="container" mode="intro">
       <div class="intro">
@@ -26,7 +32,7 @@
           <div class="details">
             <ul>
               <li>Recipe</li>
-              <li>Test 1</li>
+              <li>Details will be here</li>
             </ul>
           </div>
           <div class="buttons">
@@ -45,6 +51,7 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
   }
 
   #container {
@@ -95,6 +102,12 @@
     align-items: center;
     margin-bottom: 5px;
     margin-right: 2px;
+    cursor: pointer;
+  }
+
+  #container .dishes ul li:hover {
+    border: 1px solid green;
+    color: green;
   }
 
   #container .recipe .buttons {
@@ -105,8 +118,10 @@
 
   button {
     border: 0;
-    padding: 5px 10px;
+    padding: 20px 30px;
     cursor: pointer;
+    min-width: 150px;
+    font-size: 30px;
   }
 
   button:hover {
