@@ -1,13 +1,143 @@
 <html>
-  <head>
-    <title>Marlo Dela Torre</title>
-    <style>
-      body {
-        background: radial-gradient(at bottom left, #6b1eb580,#0000 50%), radial-gradient(at -100% 17%, #45d2f180 6%,#5090d208 43%), radial-gradient(at bottom right, #5d2c2c80, #0000 50%), linear-gradient(to bottom, #070042 0%,#070042 100%);
-      }
-    </style>
-  </head>
   <body>
-    under construction...
+    <div id="container" mode="intro">
+      <div class="intro">
+        <div class="content">
+          <h3>Welcome</h3>
+          <button class="start">Start</button>
+        </div>
+      </div>
+      <div class="dishes">
+        <div class="content">
+          <ul class="list">
+            <li value="1">Dish 1</li>
+            <li value="2">Dish 2</li>
+            <li value="3">Dish 3</li>
+            <li value="4">Dish 4</li>
+            <li value="5">Dish 5</li>
+            <li value="6">Dish 6</li>
+            <li value="7">Dish 7</li>
+            <li value="8">Dish 8</li>
+          </ul>
+        </div>
+      </div>
+      <div class="recipe">
+        <div class="content">
+          <div class="details">
+            <ul>
+              <li>Recipe</li>
+              <li>Test 1</li>
+            </ul>
+          </div>
+          <div class="buttons">
+            <button class="print">Print</button>
+            <button class="back">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #container {
+    height: 100%;
+  }
+
+  #container > div {
+    display: none;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #container .content {
+    width: 100%;
+  }
+
+  #container[mode='intro'] > .intro,
+  #container[mode='dishes'] > .dishes,
+  #container[mode='recipe'] > .recipe {
+    display: flex;
+  }
+
+  #container .intro .start {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  #container .intro .content,
+  #container .dishes .content,
+  #container .recipe .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #container .dishes ul {
+    list-style-type: none;
+  }
+
+  #container .dishes ul li {
+    display: inline-flex;
+    border: 1px solid black;
+    width: 200px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-right: 2px;
+  }
+
+  #container .recipe .buttons {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  button {
+    border: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #f1f1f1;
+  }
+</style>
+
+<script>
+  (() => {
+    const container = document.querySelector('#container');
+    const start = container.querySelector('.start');
+    const print = container.querySelector('.print');
+    const back = container.querySelector('.back');
+
+    const dishes = container.querySelector('.dishes ul');
+
+    const setMode = mode => container.setAttribute('mode', mode);
+
+    const INTRO = 'intro';
+    const DISHES = 'dishes';
+    const RECIPE = 'recipe';
+
+    start.onclick = () => setMode(DISHES);
+
+    dishes.onclick = ({ target }) => {
+      if (target.tagName === 'LI') {
+        setMode(RECIPE);
+      }
+    };
+
+    back.onclick = () => setMode(DISHES);
+    print.onclick = () => alert('Printing is not yet implemented!');
+  })();
+</script>
