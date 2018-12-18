@@ -24,7 +24,10 @@
             <li value="6">Dish 6</li>
             <li value="7">Dish 7</li>
             <li value="8">Dish 8</li>
+            <li value="9">Dish 9</li>
+            <li value="10">Dish 10</li>
           </ul>
+          <button class="home">Back</button>
         </div>
       </div>
       <div class="recipe">
@@ -75,7 +78,8 @@
     display: flex;
   }
 
-  #container .intro .start {
+  #container .intro .start,
+  #container .dishes .home {
     position: absolute;
     right: 20px;
     bottom: 20px;
@@ -133,6 +137,7 @@
   (() => {
     const container = document.querySelector('#container');
     const start = container.querySelector('.start');
+    const home = container.querySelector('.home');
     const print = container.querySelector('.print');
     const back = container.querySelector('.back');
 
@@ -145,6 +150,7 @@
     const RECIPE = 'recipe';
 
     start.onclick = () => setMode(DISHES);
+    home.onclick = () => setMode(INTRO);
 
     dishes.onclick = ({ target }) => {
       if (target.tagName === 'LI') {
